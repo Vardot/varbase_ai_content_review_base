@@ -1,10 +1,9 @@
 [![Varbase](https://raw.githubusercontent.com/Vardot/varbase/11.0.x/images/varbase-logo.png)](https://www.drupal.org/project/varbase)
 
 # Varbase AI Content Review Base
-[![CI](https://github.com/Vardot/varbase_ai_content_review_base/actions/workflows/ci.yml/badge.svg?branch=1.0.x)](https://github.com/Vardot/varbase_ai_content_review_base/actions/workflows/ci.yml)
-[![Varbase AI Content Review Base](https://img.shields.io/badge/Varbase%20AI%20Content%20Review%20Base-1.0.1-0d6efc?labelColor=001d38&style=flat-square)](https://github.com/Vardot/varbase_ai_content_review_base/releases/tag/1.0.1)
+[![Varbase AI Content Review Base](https://img.shields.io/badge/Varbase%20AI%20Content%20Review%20Base-1.0.x--dev-0d6efc?labelColor=001d38&style=flat-square)](https://www.drupal.org/project/varbase_ai_content_review_base)
 
-A private, **opt-in** Drupal recipe that adds AI content review to a Varbase 11 site, with
+An **opt-in** Drupal recipe that adds AI content review to a Varbase 11 site, with
 [AI Content Review](https://www.drupal.org/project/ai_content_review). An editor opens the **Review** tab of any
 content item and runs a review. Each criterion comes back with a 0 to 100 score, a pass, warning or fail verdict,
 an explanation that quotes the content, and suggestions. Reviews are kept as history, with a queue and a records
@@ -45,11 +44,9 @@ visitor. Change the style guide in AI Context, not in the agents.
 ## Install and apply
 
 ```bash
-# 1. Fetch the recipe. The repository is private, so Composer clones it over SSH.
-ddev auth ssh
-ddev composer config repositories.varbase_ai_content_review_base vcs git@github.com:Vardot/varbase_ai_content_review_base.git
-ddev composer config --json extra.drupal-recipe-unpack.ignore '["vardot/varbase_ai_content_review_base"]'
-ddev composer require vardot/varbase_ai_content_review_base:~1.0.1 --prefer-source
+# 1. Fetch the recipe.
+ddev composer config --json extra.drupal-recipe-unpack.ignore '["drupal/varbase_ai_content_review_base"]'
+ddev composer require drupal/varbase_ai_content_review_base:1.0.x-dev
 
 # 2. Apply it.
 ddev drush recipe ../recipes/varbase_ai_content_review_base
@@ -57,9 +54,6 @@ ddev drush cr
 
 # 3. Check it. Without arguments no AI key is needed. "review <nid>" runs one real review (one model call per
 #    criterion).
-ddev drush php:eval "$(sed -n "/<<'PHP'/,/^ *PHP\$/p" recipes/varbase_ai_content_review_base/.github/workflows/ci.yml | sed '1d;$d')"
-ddev drush php:eval "$(sed -n "/<<'PHP'/,/^ *PHP\$/p" recipes/varbase_ai_content_review_base/.github/workflows/ci.yml | sed '1d;$d' \
-  | sed "s/^ *\$extra = .*/\$extra = ['review', '1'];/")"
 ```
 
 Re-applying the recipe is safe. The ignore line keeps the recipe a locked package: without it core's
@@ -81,21 +75,13 @@ transition needs an ECA action that AI Content Review does not provide yet.
 
 ## Automated testing
 
-`.github/workflows/ci.yml` runs on every pull request, every push to `1.0.x` and every tag:
+GitLab CI on [git.drupalcode.org](https://git.drupalcode.org/project/varbase_ai_content_review_base) (`.gitlab-ci.yml`) runs on every merge
+request and every push to `1.0.x`, like the other Varbase AI recipes: `composer validate` and a lint of every YAML
+file.
 
-1. **Lint**: `composer validate`, every YAML file, and PHP syntax.
-2. **Apply on a Varbase 11 site**: built the way Vardot's public recipe CI builds one (`drupal/varbase_project`
-   `11.0.x-dev` with Varbase's curated patches, installed from Varbase Starter, on MariaDB 11.8). It requires
-   this checkout, applies the recipe twice and runs the no-key recipe check.
-3. **Functional tests**: the same job then serves the site and runs the Playwright + Cucumber scenarios in
-   `tests/features` through [`@vardot/varbase-e2e`](https://www.npmjs.com/package/@vardot/varbase-e2e) in
-   Chromium. The Webmaster provisions the testing users first, then the scenarios check the admin pages the
-   recipe adds, every page for PHP errors, and that a visitor without the permission is kept out. Screenshots
-   and reports of a failed run are kept as the `functional-tests` artifact. To run them against a site of
-   your own: `yarn install`, then `LAUNCH_URL=https://your-site.ddev.site yarn test`.
-
-The CI step "Check the recipe without an AI key" (an inline `drush php:eval` in `.github/workflows/ci.yml`) checks the modules, each agent and the tools it must use, the rule and its four criteria, that
-**the rule reaches every content type on the site**, and the role permissions. Any failed check fails the command.
+The functional tests in `tests/features` (Playwright and Cucumber through
+[`@vardot/varbase-e2e`](https://www.npmjs.com/package/@vardot/varbase-e2e)) run against a site of your own:
+`yarn install`, then `LAUNCH_URL=https://your-site.ddev.site yarn test`.
 
 ## Checked
 
@@ -126,9 +112,9 @@ rules and queue pages load. No review was run against a live model: that needs t
 
 | Recipe | What it does |
 |---|---|
-| [Varbase AI Search Base](https://github.com/Vardot/varbase_ai_search_base) | A vector index of the site's content. |
-| [Varbase AI Answers Base](https://github.com/Vardot/varbase_ai_answers_base) | Ask AI: cited answers over that index. |
-| [Varbase AI Chatbot Base](https://github.com/Vardot/varbase_ai_chatbot_base) | A visitor chatbot over that index. |
+| [Varbase AI Search Base](https://www.drupal.org/project/varbase_ai_search_base) | A vector index of the site's content. |
+| [Varbase AI Answers Base](https://www.drupal.org/project/varbase_ai_answers_base) | Ask AI: cited answers over that index. |
+| [Varbase AI Chatbot Base](https://www.drupal.org/project/varbase_ai_chatbot_base) | A visitor chatbot over that index. |
 
 ## License
 
