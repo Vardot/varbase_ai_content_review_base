@@ -1,0 +1,76 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - ai_agents.ai_agent.varbase_ai_content_review_audience_alignment
+    - ai_agents.ai_agent.varbase_ai_content_review_brand_voice_compliance
+    - ai_agents.ai_agent.varbase_ai_content_review_editorial_quality
+    - ai_agents.ai_agent.varbase_ai_content_review_prohibited_terminology
+  module:
+    - node
+id: varbase_editorial_review
+label: 'Editorial review'
+record_type: internal
+entity_type: node
+# Empty means every content type, so the same rule fits Varbase Starter,
+# Educare, Horizon Aid and The Rightup without naming their bundles.
+bundles: []
+schedule_enabled: false
+schedule_interval: 86400
+criteria:
+  -
+    label: 'Editorial Quality'
+    plugin_id: agent_based
+    pass_threshold: 70
+    warn_threshold: 50
+    configuration:
+      agent_id: varbase_ai_content_review_editorial_quality
+      provider_config:
+        use_default: true
+        provider: ''
+        model: ''
+        config: {  }
+      prompt_template: ''
+      execution_mode: direct
+  -
+    label: 'Brand Voice Compliance'
+    plugin_id: agent_based
+    pass_threshold: 70
+    warn_threshold: 50
+    configuration:
+      agent_id: varbase_ai_content_review_brand_voice_compliance
+      provider_config:
+        use_default: true
+        provider: ''
+        model: ''
+        config: {  }
+      prompt_template: ''
+      execution_mode: direct
+  -
+    label: 'Prohibited Terminology'
+    plugin_id: agent_based
+    pass_threshold: 70
+    warn_threshold: 50
+    configuration:
+      agent_id: varbase_ai_content_review_prohibited_terminology
+      provider_config:
+        use_default: true
+        provider: ''
+        model: ''
+        config: {  }
+      prompt_template: ''
+      execution_mode: direct
+  -
+    label: 'Audience Alignment'
+    plugin_id: agent_based
+    pass_threshold: 70
+    warn_threshold: 50
+    configuration:
+      agent_id: varbase_ai_content_review_audience_alignment
+      provider_config:
+        use_default: true
+        provider: ''
+        model: ''
+        config: {  }
+      prompt_template: ''
+      execution_mode: direct

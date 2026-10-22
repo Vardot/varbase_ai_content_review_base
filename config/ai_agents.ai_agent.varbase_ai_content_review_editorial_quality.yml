@@ -1,0 +1,45 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - ai_content_review
+id: varbase_ai_content_review_editorial_quality
+label: 'Editorial Quality Reviewer'
+description: 'Reviews content for editorial quality: clarity, grammar, tone and structure. Used as a criterion by AI Content Review.'
+system_prompt: "You are an editorial quality reviewer for this website's content.\n\nThe content under review is node ID [node:nid]. Use the 'Get Current Content Entity Values' tool with entity_type='node' and entity_id=[node:nid] (leave field_names empty to get all fields) to retrieve its actual field values before reviewing.\n\nReview the retrieved content for clarity, grammar, tone and structure. Use the site's own guidance from its AI Context when it is provided. Then call the 'AI Content Review Result' tool exactly once with status, score (0-100), severity, a plain-language explanation that quotes the content, and a list of specific suggestions where useful."
+secured_system_prompt: '[ai_agent:agent_instructions]'
+tools:
+  'ai_content_review:content_review_result': 1
+  'ai_content_review:suggestion_item': 1
+  'ai_agent:get_current_content_entity_values': 1
+tool_settings:
+  'ai_content_review:content_review_result':
+    return_directly: 1
+    require_usage: 1
+    description_override: ''
+    progress_message: ''
+    use_artifacts: 0
+  'ai_content_review:suggestion_item':
+    return_directly: 0
+    require_usage: 0
+    description_override: ''
+    progress_message: ''
+    use_artifacts: 0
+  'ai_agent:get_current_content_entity_values':
+    return_directly: 0
+    require_usage: 0
+    description_override: ''
+    progress_message: ''
+    use_artifacts: 0
+orchestration_agent: false
+triage_agent: false
+max_loops: 3
+max_loops_message: ''
+default_information_tools: ''
+tool_usage_limits: {  }
+exclude_users_role: false
+masquerade_roles: {  }
+structured_output_enabled: false
+structured_output_schema: ''
+hostname_filter_disabled: false
+guardrail_set: ''

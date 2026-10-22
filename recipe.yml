@@ -1,0 +1,44 @@
+name: 'Varbase AI Content Review Base'
+description: >-
+  Opt-in AI content review for Varbase 11 sites: editors run a review from the
+  Review tab of any content item and get a 0 to 100 score per criterion, a
+  pass, warning or fail verdict, an explanation and suggestions. Installs AI
+  Content Review with four review agents (editorial quality, brand voice,
+  prohibited terminology, audience) and one rule that covers every content
+  type, so it works the same on Varbase Starter, Educare, Horizon Aid and The
+  Rightup. The agents use the site's AI Context guidance (brand voice,
+  terminology, audience personas) when it exists. Grants the review
+  permissions to Varbase's editorial roles. Needs a default chat model that
+  supports tools. No custom PHP or shell code. Experimental: AI Content
+  Review has no stable release.
+type: 'Varbase AI'
+install:
+  - node
+  - user
+  - ai
+  - ai_agents
+  - ai_content_review
+config:
+  # Re-applying must be safe: create what is missing and leave the rest.
+  strict: false
+  actions:
+    user.role.content_editor:
+      grantPermissions:
+        - 'run reviews'
+        - 'view review records'
+    user.role.content_admin:
+      grantPermissions:
+        - 'configure reviews'
+        - 'run reviews'
+        - 'run batch reviews'
+        - 'view review records'
+        - 'view review history'
+        - 'view review queue'
+    user.role.site_admin:
+      grantPermissions:
+        - 'configure reviews'
+        - 'run reviews'
+        - 'run batch reviews'
+        - 'view review records'
+        - 'view review history'
+        - 'view review queue'
