@@ -2,6 +2,7 @@
     "name": "drupal/varbase_ai_content_review_base",
     "description": "AI content review for Varbase 11: four review agents and one rule for every content type, on AI Content Review, so it works on Varbase Starter, Educare, Horizon Aid and The Rightup. Experimental: AI Content Review has no stable release. No custom PHP or shell code.",
     "type": "drupal-recipe",
+    "version": "1.0.0-alpha1",
     "keywords": [
         "recipe",
         "Varbase recipes",

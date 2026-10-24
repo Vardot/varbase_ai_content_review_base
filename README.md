@@ -1,7 +1,7 @@
 [![Varbase](https://raw.githubusercontent.com/Vardot/varbase/11.0.x/images/varbase-logo.png)](https://www.drupal.org/project/varbase)
 
 # Varbase AI Content Review Base
-[![Varbase AI Content Review Base](https://img.shields.io/badge/Varbase%20AI%20Content%20Review%20Base-1.0.x--dev-0d6efc?labelColor=001d38&style=flat-square)](https://www.drupal.org/project/varbase_ai_content_review_base)
+[![Varbase AI Content Review Base](https://img.shields.io/badge/Varbase%20AI%20Content%20Review%20Base-1.0.0--alpha1-0d6efc?labelColor=001d38&style=flat-square)](https://www.drupal.org/project/varbase_ai_content_review_base)
 
 An **opt-in** Drupal recipe that adds AI content review to a Varbase 11 site, with
 [AI Content Review](https://www.drupal.org/project/ai_content_review). An editor opens the **Review** tab of any
