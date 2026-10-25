@@ -9,9 +9,9 @@ GitHub repository is a mirror and takes no issues or pull requests.
 
 ## Before you start
 
+- **Documentation** lives on the Varbase docs site: [docs.varbase.vardot.com](https://docs.varbase.vardot.com/developers/understanding-varbase/varbase-ai-recipes/varbase-ai-content-review-base). Keep `README.md` short and link there; add no `docs/` folder.
 - **`CHANGELOG.md`**: what changed in each release, newest first, and which site templates it was checked on.
 - **Issues and merge requests** on [drupal.org](https://www.drupal.org/project/issues/varbase_ai_content_review_base).
-- **`README.md`**: what the recipe adds, what it deliberately leaves out, and the known issues in AI Content Review.
 
 ## When you make a change
 
