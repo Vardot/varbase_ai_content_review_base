@@ -5,9 +5,9 @@ Varbase 11 site with this recipe applied.
 
 | Feature | Covers |
 | --- | --- |
-| `01-01-ai-content-review-base-rule.feature` | The editorial review rule for every content type, enabled, and its four review agents |
-| `01-02-ai-content-review-base-review-tab.feature` | An editor writes a blog post, opens AI Review and runs a review |
-| `01-03-ai-content-review-base-access.feature` | Editors run reviews; content and site admins also manage rules and the queue; SEO admins and visitors have no access |
+| `01-01-ai-content-review-base-review-tab.feature` | An editor saves a post, finds the four review criteria on its AI Review tab, runs the editorial quality review and gets the result |
+| `01-02-ai-content-review-base-access.feature` | Who opens the AI Review tab, who manages the rules and the queue, and who gets Access denied |
+| `01-03-ai-content-review-base-accessibility.feature` | The AI Review tab gives every field a label and every link a name |
 
 ## Run it
 
@@ -22,7 +22,6 @@ The site needs the webmaster (`webmaster`) and one user per role, named after th
 
 ## AI provider
 
-The suite needs no AI provider and no key. The `@no-provider` scenario expects a review run on a site without
-one to be recorded as Failed. Scenarios tagged `@ai-provider` need a real provider with a chat model that supports
-tools (`npm run test:ai-provider`); in CI they run in their own job, only when the project has an
-`OPENAI_API_KEY` variable. The access scenarios open the Varbase demo blog post at `/node/2`.
+CI applies Drupal CMS AI before the recipe. It sets up an amazee.ai trial as the default provider, so no key
+is needed and reviews run on a real model. One review took about 12 seconds on a local site; the scenario
+waits up to 10 seconds for the request and then checks for the result for up to 10 more.

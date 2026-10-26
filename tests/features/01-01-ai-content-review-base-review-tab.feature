@@ -22,19 +22,13 @@ Feature: Varbase AI Recipe - AI Content Review Base - Reviewing a blog post
       And I should see "Audience Alignment"
       And I should see "Not run"
 
-  @no-provider
-  Scenario: Verify a review run without an AI provider is recorded as failed
+  Scenario: Verify an editor runs the editorial quality review and gets the result
+    CI has no real RAG or vector database hosting: it uses only what the pipeline has and the free amazee.ai
+    trial from Drupal CMS AI (thanks to amazee.ai). A review comes back in about 12 seconds.
      When I open the top bar page actions menu
       And I click "AI Review"
       And I click "Review" in the "Editorial Quality" row
-     Then eventually I should see "Failed" within 40 seconds
-      And I should see "by content_editor"
-
-  @ai-provider
-  Scenario: Verify a review run gives a score and a grade
-     When I open the top bar page actions menu
-      And I click "AI Review"
-      And I click "Review" in the "Editorial Quality" row
-      And I wait max of 40 seconds
-     Then I should see "Complete" in the "Editorial Quality" row
+      And I wait max of 10 seconds
+     Then eventually I should see "Complete" within 10 seconds
+      And I should see "Complete" in the "Editorial Quality" row
       And I should not see "Failed"
