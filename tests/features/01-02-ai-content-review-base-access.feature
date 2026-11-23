@@ -6,7 +6,7 @@ Feature: Varbase AI Recipe - AI Content Review Base - Who runs reviews and who c
 
   Scenario Outline: Check the "<user>" user can open the AI Review tab
     Given I am a logged in user with the "<user>" user
-     When I go to "/node/2/ai-review"
+     When I go to "/ai-review-test"
      Then the response status code should be 200
       And I should see "Editorial Quality"
 
@@ -36,12 +36,12 @@ Feature: Varbase AI Recipe - AI Content Review Base - Who runs reviews and who c
 
   Scenario: Check the SEO admin has no AI Review tab
     Given I am a logged in user with the "SEO admin" user
-     When I go to "/node/2/ai-review"
+     When I go to "/ai-review-test"
      Then the response status code should be 403
       And I should see "Access denied"
 
   Scenario: Check an anonymous visitor cannot open the AI Review tab
     Given I am an anonymous user
-     When I go to "/node/2/ai-review"
+     When I go to "/ai-review-test"
      Then the response status code should be 403
       And I should not see "Editorial Quality"

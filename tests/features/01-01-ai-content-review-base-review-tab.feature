@@ -22,6 +22,8 @@ Feature: Varbase AI Recipe - AI Content Review Base - Reviewing a blog post
       And I should see "Audience Alignment"
       And I should see "Not run"
 
+  # Needs a real model's review: Echo's reply is not a review result.
+  @live-ai
   Scenario: Verify an editor runs the editorial quality review and gets the result
     CI has no real RAG or vector database hosting: it uses only what the pipeline has and the free amazee.ai
     trial from Drupal CMS AI (thanks to amazee.ai). A review comes back in about 12 seconds.

@@ -6,7 +6,7 @@ Feature: Varbase AI Recipe - AI Content Review Base - Accessible AI Review
 
   Scenario: Check the AI Review tab gives every field a label and every link a name
     Given I am a logged in user with the "Content editor" user
-     When I go to "/node/2/ai-review"
+     When I go to "/ai-review-test"
      Then every form field should have an accessible label
       And every link should have an accessible name
       And every ARIA role should be valid
