@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-11-23
+### Changed
+- Change the default PHP version to PHP 8.5 in the GitLab CI ([#3637926](https://www.drupal.org/i/3637926)).
+- Update the version badge to `1.0.0` in `README.md`.
+
 ## [1.0.0-rc1] - 2026-11-13
 ### Added
 - A Claude Code agent and skill for applying and verifying Varbase AI Content Review ([#3633896](https://www.drupal.org/i/3633896)).
@@ -31,7 +36,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 - The GitHub Actions workflows and the `.github` templates: CI runs on git.drupalcode.org.
 
-[Unreleased]: https://git.drupalcode.org/project/varbase_ai_content_review_base/-/compare/1.0.0-rc1...1.0.x
+[Unreleased]: https://git.drupalcode.org/project/varbase_ai_content_review_base/-/compare/1.0.0...1.0.x
+[1.0.0]: https://git.drupalcode.org/project/varbase_ai_content_review_base/-/compare/1.0.0-rc1...1.0.0
 [1.0.0-rc1]: https://git.drupalcode.org/project/varbase_ai_content_review_base/-/compare/1.0.0-beta1...1.0.0-rc1
 [1.0.0-beta1]: https://git.drupalcode.org/project/varbase_ai_content_review_base/-/compare/1.0.0-alpha1...1.0.0-beta1
 [1.0.0-alpha1]: https://git.drupalcode.org/project/varbase_ai_content_review_base/-/tags/1.0.0-alpha1
