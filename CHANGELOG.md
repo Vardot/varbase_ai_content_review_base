@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.1] - 2026-11-25
+### Changed
+- Use caret constraints and allow Drupal 11.4 and later and Drupal 12 in Varbase AI Content Review Base ([#3637929](https://git.drupalcode.org/project/varbase_ai_content_review_base/-/work_items/3637929)).
+- Update the version badge to `1.0.1` in `README.md`.
+
 ## [1.0.0] - 2026-11-23
 ### Changed
 - Change the default PHP version to PHP 8.5 in the GitLab CI ([#3637926](https://www.drupal.org/i/3637926)).
@@ -36,7 +41,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Removed
 - The GitHub Actions workflows and the `.github` templates: CI runs on git.drupalcode.org.
 
-[Unreleased]: https://git.drupalcode.org/project/varbase_ai_content_review_base/-/compare/1.0.0...1.0.x
+[Unreleased]: https://git.drupalcode.org/project/varbase_ai_content_review_base/-/compare/1.0.1...1.0.x
+[1.0.1]: https://git.drupalcode.org/project/varbase_ai_content_review_base/-/compare/1.0.0...1.0.1
 [1.0.0]: https://git.drupalcode.org/project/varbase_ai_content_review_base/-/compare/1.0.0-rc1...1.0.0
 [1.0.0-rc1]: https://git.drupalcode.org/project/varbase_ai_content_review_base/-/compare/1.0.0-beta1...1.0.0-rc1
 [1.0.0-beta1]: https://git.drupalcode.org/project/varbase_ai_content_review_base/-/compare/1.0.0-alpha1...1.0.0-beta1
